@@ -38,9 +38,10 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 /* Custom constants */
 define('UPLOAD_PATH', './images/');
+$environment = getenv("ENVIRONMENT");
 switch ($environment) {
     case ("development"):
-        define('BASE_URL', '');
+        define('BASE_URL', 'http://beli.localhost');
         break;
     case ("staging"):
         define('BASE_URL', '');
