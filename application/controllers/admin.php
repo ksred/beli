@@ -37,6 +37,13 @@ class Admin extends CI_Controller {
                 header("Location: /admin/index");
             }
         }
+        
+        public function logout () {
+            $this->session->sess_destroy();
+            $this->session->unset_userdata("role");
+            $this->session->unset_userdata("name");
+            header("Location: /");
+        }
 }
 
 /* End of file admin.php */
