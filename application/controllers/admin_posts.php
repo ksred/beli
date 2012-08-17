@@ -33,15 +33,15 @@ class Admin_posts extends CI_Controller {
 		$this->load->view("admin/posts/list", $data);
 	}
 	
-	public function _add () {
+	public function d_add () {
 		//used for data queries
 	}
         
-	public function _edit () {
+	public function d_edit () {
 		//used for data queries
 	}
 	
-	public function _delete () {
+	public function d_delete () {
 		//used for data queries
 	}
 }

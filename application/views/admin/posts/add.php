@@ -3,7 +3,7 @@
 <?php $this->load->view("admin/posts/menu"); ?>
 
 <div class="span9">
-        <form method="POST" action="<?= BASE_URL ?>/admin_posts/_add" class="form-vertical post-add">
+        <form method="POST" action="<?= BASE_URL ?>/admin_posts/d_add" class="form-vertical post-add">
             <input type="text" name="title" placeholder="Title" required /><br />
             <textarea name="summary" placeholder="Summary" required></textarea><br />
             <textarea rows=30 name="body" placeholder="Body" required></textarea><br />
