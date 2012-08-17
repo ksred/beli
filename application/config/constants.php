@@ -36,6 +36,18 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
-
+/* Custom constants */
+define('UPLOAD_PATH', './images/');
+switch ($environment) {
+    case ("development"):
+        define('BASE_URL', '');
+        break;
+    case ("staging"):
+        define('BASE_URL', '');
+        break;
+    case ("production"):
+        define('BASE_URL', '');
+        break;    
+}
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

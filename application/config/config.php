@@ -14,7 +14,18 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$environment = getenv("ENVIRONMENT");
+switch ($environment) {
+    case ("development"):
+        $config['base_url']	= '';
+        break;
+    case ("staging"):
+        $config['base_url']	= '';
+        break;
+    case ("production"):
+        $config['base_url']	= '';
+        break;    
+}
 
 /*
 |--------------------------------------------------------------------------
