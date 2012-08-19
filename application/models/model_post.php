@@ -147,4 +147,23 @@ class Model_post extends CI_Model
         $result = $this->db->insert("post_categories", $categories);
         return $result;
     }
+    
+    function get_post_from_id($id) {
+        $post = $this->get_post_body($id);
+        $post_categories = $this->get_post_categories($id);
+        $post_tags = $this->get_post_tags($id);
+        $tags = explode(',', $post_tags);
+        $categories = explode(',', $post_categories);
+        $data = array($post, "tags" => $tags, "categories" => $categories);
+        
+        return $data;
+    }
+    
+    function get_post_body($id) {
+        $this->db->select('*');
+        $this->db->from('posts');
+        $this->db->where('id', $id);
+        $result = $this->db->get();
+        die(var_dump($result));
+    }
 }

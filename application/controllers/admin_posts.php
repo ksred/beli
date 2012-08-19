@@ -28,6 +28,18 @@ class Admin_posts extends CI_Controller {
 		$this->load->view("admin/posts/add", $data);
 	}
 	
+	public function edit ($id) {
+		$data['title'] = "Beli :: Admin";
+		$data['section'] = "posts";
+		$data['subsection'] = "edit";
+		$data['categories'] = $this->Model_post->list_all_categories();
+		$data['tags'] = $this->Model_post->list_all_tags();
+		$data['media'] = $this->Model_post->list_all_media();
+		$data['post_data'] = $this->Model_posts->get_post_from_id($id);
+                
+		$this->load->view("admin/posts/edit", $data);
+	}
+	
 	public function list_all () {
 		$data['title'] = "Beli :: Admin";
 		$data['section'] = "posts";
@@ -61,7 +73,27 @@ class Admin_posts extends CI_Controller {
 	}
         
 	public function d_edit () {
-		//used for data queries
+		if(isset($_POST['title'])) $title = $_POST['title'];
+		if(isset($_POST['summary'])) $summary = $_POST['summary'];
+		if(isset($_POST['body'])) $body = $_POST['body'];
+		if(isset($_POST['categories'])) $categories = $_POST['categories'];
+		if(isset($_POST['tags'])) $tags = $_POST['tags'];
+		
+		$data = array (
+			"title" => $title,
+			"summary" => $summary,
+			"body" => $body,
+			"tags" => $tags,
+			"categories" => $categories
+		);
+		$result = $this->Model_post->add_post($data);
+		if($result== TRUE) {
+			$success = TRUE;
+		} else {
+			$success = FALSE;
+		}
+		$data['success'] = $success;
+		$this->load->view('/admin/posts/add', $data);
 	}
 	
 	public function d_delete () {
