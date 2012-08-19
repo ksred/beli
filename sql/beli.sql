@@ -6,7 +6,7 @@
 -- Generation Time: Aug 17, 2012 at 02:04 PM
 -- Server version: 5.5.24
 -- PHP Version: 5.3.14
-
+use beli;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 

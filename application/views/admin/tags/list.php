@@ -1,12 +1,12 @@
 <?php $this->load->view("_template/header"); ?>
 
-<?php $this->load->view("admin/categories/menu"); ?>
+<?php $this->load->view("admin/tags/menu"); ?>
 
 <div class="well span8">
-<?php if(isset($categories)) :?>
-    <?php foreach($categories->result() as $c) : ?>
+<?php if(isset($tags)) :?>
+    <?php foreach($tags->result() as $t) : ?>
         <ul class="unstyled">
-            <li><?= $c->name ?></li>
+            <li><?= $t->tag ?></li>
         </ul>
     <?php endforeach; ?>
 <?php endif; ?>

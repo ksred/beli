@@ -26,9 +26,27 @@ class Admin_categories extends CI_Controller {
 		$this->load->view("admin/categories/add", $data);
 	}
 	
+	public function list_all () {
+		$data['title'] = "Beli :: Admin";
+                $data['section'] = "categories";
+		$data['subsection'] = "list";
+		$data['categories'] = $this->Model_post->list_all_categories();
+		
+		$this->load->view("admin/categories/list", $data);
+	}
+	
 	public function d_add () {
+		$data['title'] = "Beli :: Admin";
+                $data['section'] = "categories";
+		$data['subsection'] = "add";
 		if(isset($_POST['name'])) $name = $_POST['name'];
-		$this->Model_post->add_category($name);
+		$result = $this->Model_post->add_category($name);
+		
+		if ($result == TRUE) {
+			$data['success'] = TRUE;
+		} else {
+			$data['success'] = FALSE;
+		}		
 	}
         
 }
