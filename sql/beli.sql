@@ -3,12 +3,13 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 19, 2012 at 01:40 PM
+-- Generation Time: Aug 19, 2012 at 02:47 PM
 -- Server version: 5.5.24
 -- PHP Version: 5.3.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
 use beli;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -63,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `state` int(1) NOT NULL,
   `author` int(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 -- --------------------------------------------------------
 
@@ -74,9 +75,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
 CREATE TABLE IF NOT EXISTS `post_categories` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `post_id` int(100) NOT NULL,
-  `category_id` int(100) NOT NULL,
+  `category_id` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -87,9 +88,9 @@ CREATE TABLE IF NOT EXISTS `post_categories` (
 CREATE TABLE IF NOT EXISTS `post_tags` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `post_id` int(100) NOT NULL,
-  `tag_id` int(100) NOT NULL,
+  `tag_id` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 

@@ -11,12 +11,22 @@
 <?php endif; ?>
 
 <div class="span9">
-        <form method="POST" action="<?= BASE_URL ?>/admin_posts/d_add" class="form-vertical post-add">
+        <form method="POST" action="<?= BASE_URL ?>/admin_posts/d_add" class="form-vertical post-add" enctype="multipart/form-data">
             <input type="text" name="title" placeholder="Title" required /><br />
             <textarea name="summary" placeholder="Summary" required></textarea><br />
             <textarea rows=30 name="body" placeholder="Body" required></textarea><br />
-            <span>Multi select for categories</span>
-            <span>Multi select for tags</span>
+            <label for="categories">Categories</label>
+            <select name="categories[]" multiple="multiple">
+                <?php foreach($categories->result() as $c): ?>
+                        <option value="<?= $c->id ?>"><?= $c->name ?></option>
+                <?php endforeach;?>
+            </select>
+            <label for="tags">Tags</label>
+            <select name="tags[]" multiple="multiple">
+                <?php foreach($tags->result() as $t): ?>
+                        <option value="<?= $t->id ?>"><?= $t->tag ?></option>
+                <?php endforeach;?>
+            </select>
             <input type="submit" value="Create" class="btn">
         </form>
 </div>

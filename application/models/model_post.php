@@ -93,5 +93,58 @@ class Model_post extends CI_Model
                     $data = array('upload_data' => $this->upload->data());
                     return $data;
             }
-    }    
+    }
+    
+    function add_post($data) {
+        $data['tags'] = implode(',', $data['tags']);
+        $data['categories'] = implode(',', $data['categories']);
+        $result_post = $this->add_post_post($data['title'], $data['summary'], $data['body']);
+        $post_id = $this->get_post_from_title($data['title']);
+        $result_categories = $this->add_post_categories($post_id, $data['categories']);
+        $result_tags = $this->add_post_tags($post_id, $data['tags']);
+        if(($result_post == TRUE)&&($result_categories == TRUE)&&($result_tags == TRUE)) {
+            $result = TRUE;
+        } else {
+            $result = FALSE;
+        }
+        return $result;
+    }
+    
+    function add_post_post($title, $summary, $body) {
+        $data = array(
+            "title" => $title,
+            "summary" => $summary,
+            "body" => $body
+        );
+        $result = $this->db->insert("posts", $data);
+        return $result;
+    }
+    
+    function get_post_from_title($title) {
+        $this->db->select("id");
+        $this->db->from("posts");
+        $this->db->where("title", $title);
+        $this->db->limit(1);
+        $this->db->order_by("id", "desc");
+        $result = $this->db->get();
+        $result = $result->result();
+        if (!is_null($result)) {
+            $id = $result[0]->id;
+            return $id;
+        } else {
+            return FALSE;
+        }
+    }
+    
+    function add_post_tags($post_id, $tags) {
+        $tags = array("post_id" => $post_id, "tag_id" => $tags);
+        $result = $this->db->insert("post_tags", $tags);
+        return $result;
+    }
+    
+    function add_post_categories($post_id, $categories) {
+        $categories = array("post_id" => $post_id, "category_id" => $categories);
+        $result = $this->db->insert("post_categories", $categories);
+        return $result;
+    }
 }
