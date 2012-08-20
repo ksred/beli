@@ -2,6 +2,32 @@ header {
     margin-bottom: 50px;
 }
 
+body {
+	background: url('/assets/img/bg.png') repeat;
+}
+
 .post-add input, .post-add textarea {
     width: 100%;
+}
+
+#web-container {
+	padding: 0px;
+}
+
+#web-container .menu {
+	background-color: rgba(0, 0, 0, 0.8);
+	padding: 0px;
+	height: 2000px;
+	position: fixed;
+}
+
+
+#web-container .menu ul {
+	padding: 0px 20px;
+}
+
+#web-container .main {
+	padding: 0px;
+	background-color: rgba(255, 255, 255, 0.5);
+	margin-left: 340px;
 }
