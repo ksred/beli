@@ -166,4 +166,11 @@ class Model_post extends CI_Model
         $result = $this->db->get();
         die(var_dump($result));
     }
+
+    function get_all_posts() {
+        $this->db->select("*");
+        $this->db->from("posts");
+        $result = $this->db->get();
+        return $result;
+    }
 }

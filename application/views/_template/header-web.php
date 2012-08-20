@@ -18,7 +18,4 @@
   </head>
 
   <body>
-    <header>
-        <?php $this->load->view("_template/nav-admin"); ?>
-    </header>
-    <div class="container">
+    <div class="container-fluid">
